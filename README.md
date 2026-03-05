@@ -29,10 +29,9 @@ brands: https://hartvillehardware.myshopify.com/pages/shop-all-brands
 
 These are the links provided by martina for the header. Some pages were created but they still have no content.
 
-You can check this component in the Content -> universal content menu or this link: 
+check this component in the Content -> universal content menu or this link: 
 https://www.klaviyo.com/email-template-editor/universal/section/7b0e2e9c83024cf88ccebc82a02f1388 
 
-And check the links written there. 
 
 ## Welcome Email:
 
@@ -232,25 +231,55 @@ Payload:
 5. Your cart is saved by shopify in a cookie; if you click the email and you are in a different session, you wont see the cart content as you left it.
 
 ## Abandoned Checkout:
-6. About this comment: *I'm referring to text below the first image in the email, right below the header, they are all with "You're Just One Step Away" text, but this text should be only on first email, second and third have each a different message.* 
 
-I think in this case you received the Abandoned Checkout; not the cart and you are right.
+    Abandoned checkout 1, 2 and 3:
+    ❌ Blocker —> email trigger is not reliable and it's now working as expected, not able to trigger emails anymore to validate all cases ❌
+    🟡 yellow items are items that were not validated because of the blocker.
+    Second round of testing:
+    Three emails received as expect when abandoning checkout. ✅
 
-Abandoned Cart design:
 
-![alt text](images/copyOfAbandonedCartDesign.png)
+    Now it's showing SKU of the product below product name, is this expected? ❓ @Martina Esersky please review. — this is not present on designs.
 
-Abandoned Cart Emails: 
 
-![alt text](images/cartCopyEmail1.png)
-![alt text](images/cartCopyEmail2.png)
-![alt text](images/cartCopyEmail3.png)
 
-Also Abandoned Checkout just to show that it has been fixed:
+    Issues Reported:
+    Title of email 1 seems wrong → “we've save your shopping cart for you!” , expected? ❓@Martina Esersky please review.
+    Possible to interact and click with table elements and open png and download it. - ❌ not fixed, still possible to click at the table and open PNG image, as well the callout image.
+    Wrong callout text on emails 2 and 3, according to designs every email has a different callout message below the image. - ❌ not fixed.
+    The layout of the products table/summary is different from designs - ❌ not fixed.
+    the color of the products price is off, we’re using red for the final price, when red should only be used for promotional price. 🟡
+    promotional price showing black 🟡
+    subtotal showing as red, should be black. - ✅ fixed
+    not showing discount line on summary. 🟡
+    when there’s no taxes/shipping, the “Shipping” and “Shipping will be calculated in cart” there’s no space between them. - ❌ not fixed.
+    At emails 2 and 3, the space/line breaking between the words/phrases is off from designs. - ✅ improved.
+    Links redirection:
+    Resume my checkout: redirecting to checkout page with correct items and quantity. 🟡
+    The Hartville hardware team banner - ❌ not fixed, still redirecting to Hartville live site.
+    Mobile issues reported:
+    Mobile dark mode the colors of the email are off overall, could be improved. → Dark/light mode is still to be confirmed by client - we´re ok with this for now.
+
+
+
+1. Resolved, now we are using started checkout + placed order and after QA we will add a re entry policy to avoid spam email.
+2. Sku was clients petition.
+3. Dynamic tables wont permit modification of surrounding code; so we cant avoid that.
+4. Callout image can be handled differently to avoid the image viewer of the email clients.
+
+* About this comment: *I'm referring to text below the first image in the email, right below the header, they are all with "You're Just One Step Away" text, but this text should be only on first email, second and third have each a different message.* 
+
+Fixed:
+
+Abandoned Checkout just to show that it has been fixed:
 
 ![alt text](images/abandoned1.png)
 ![alt text](images/abandoned2.png)
 ![alt text](images/abandoned3.png)
+
+
+
+
 
 ## Order Confirmation - shipping
 
@@ -558,3 +587,8 @@ Mobile notes:
 
 ## General Notes
 
+I have some considerations about layout in general:
+
+1. To keep the zebra listing; we have to play to much with negative margins, they work fine in desktop but in mobile they tend to be a little bit unreliable. I Recommend a change in layout for mobile. Something simpler that leaves some space for all that information.
+2. Order numbers are fully rendered, they just have 4 numbers only, and some orders have "HWEBS" prefix that I was instructed to cut.
+3. 
